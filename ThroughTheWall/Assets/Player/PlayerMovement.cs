@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-	float speed = 1;
-	float rotSpeed = 20;
+	float speed = 10;
+	float rotSpeed = 120;
 	float rot = 0f;
 	float gravity = 8;
 
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 			if (Input.GetKey(KeyCode.Space))
             {
 				anim.SetInteger("condition", 1);
-				moveDir = new Vector3(0, 8, 1);
+				moveDir = new Vector3(0, 1, 1);
 				moveDir *= speed;
 				moveDir = transform.TransformDirection(moveDir);
 			}
