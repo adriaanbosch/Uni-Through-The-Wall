@@ -58,7 +58,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CharacterArmature|Walk
-  m_Speed: 0.15
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -9021680532945967917}
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5599002979973759676, guid: dd88186f509babe4e88bb1b0f2c1eddb,
+  m_Motion: {fileID: -5599002979973759676, guid: 75f7acab7b733074182b399bcce66dae,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -92,7 +92,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -114,7 +114,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CharacterArmature|Idle
-  m_Speed: 0.25
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6325624954169923447}
@@ -127,7 +127,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 9061338213343248790, guid: dd88186f509babe4e88bb1b0f2c1eddb,
+  m_Motion: {fileID: 9061338213343248790, guid: 75f7acab7b733074182b399bcce66dae,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
