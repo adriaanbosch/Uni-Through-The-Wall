@@ -10,7 +10,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-//    public GameObject WallScript;
 
     void Start()
     {
@@ -39,7 +38,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         Paused_Q = false;
-//        WallScript.SetActive(true);
     }
 
     void Pause()
@@ -47,13 +45,11 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         Paused_Q = true;
-//        WallScript.SetActive(false);
     }
 
     public void LoadMenu()
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
-//        WallScript.SetActive(true);
     }
 }

@@ -8,10 +8,12 @@ public class WallScript : MonoBehaviour
     public int wallDifficulty;
     public bool breakablePart;
     public float wallSpeed;
+    public float current_speed; // this was added to keep a record of speed as it will increase. This is needed because I need to set wallSpeed to 0 for pause, Dhanan
     // Start is called before the first frame update
     void Start()
     {
         wallSpeed = 0.1f;
+        current_speed = wallSpeed;
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class WallScript : MonoBehaviour
         }
         else
         {
-            wallSpeed = 0.1f;
+            wallSpeed = current_speed;
         }
     }
 }
