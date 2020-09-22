@@ -9,7 +9,7 @@ public class DeployWalls : MonoBehaviour
     public GameObject wallBasic3;
     private int i;
     public float respawnTime = 10.0f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +18,14 @@ public class DeployWalls : MonoBehaviour
 
     private void spawnWalls() {
         i = Random.Range(1, 4);
+    
         // adds prefab to scene
         if (i == 1) {
             GameObject a = Instantiate(wallBasic1) as GameObject;
-            a.transform.position = new Vector3(0.002377659f, 5f, 115.4f);
+            a.transform.position = new Vector3(-5.5f, 5f, 115.4f);
         } else if (i == 2) {
             GameObject a = Instantiate(wallBasic2) as GameObject;
-            a.transform.position = new Vector3(6.7f, 7.2f, 115.4f);
+            a.transform.position = new Vector3(-2.5f, 5f, 115.4f);
         } else if (i == 3) {
             GameObject a = Instantiate(wallBasic3) as GameObject;
             a.transform.position = new Vector3(0.0f, 7.5f, 115.4f);

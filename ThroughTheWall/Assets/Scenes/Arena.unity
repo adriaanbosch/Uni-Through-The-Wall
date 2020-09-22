@@ -966,7 +966,7 @@ MonoBehaviour:
     type: 3}
   wallBasic3: {fileID: 4120451040780913016, guid: 4e86339f8aecfd142a03dcff8cfad033,
     type: 3}
-  respawnTime: 10
+  respawnTime: 3
 --- !u!1 &568661461
 GameObject:
   m_ObjectHideFlags: 0
