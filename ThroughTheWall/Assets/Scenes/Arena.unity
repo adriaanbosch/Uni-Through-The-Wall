@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 529872293}
   - component: {fileID: 529872292}
   - component: {fileID: 529872291}
-  - component: {fileID: 529872294}
+  - component: {fileID: 529872295}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -986,13 +986,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529872290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: -67.3}
+  m_LocalPosition: {x: 0, y: 8, z: -33.5}
   m_LocalScale: {x: 1, y: 1, z: 1.1961606}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &529872294
+--- !u!114 &529872295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1001,11 +1001,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 529872290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 699faef03ca88184d8a6bb62d85fed77, type: 3}
+  m_Script: {fileID: 11500000, guid: 378383791f1afc74d849bf17498f5fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPos: {fileID: 1749622398}
-  obstacle: {fileID: 5062172552364453805, guid: 8902e0f555424a940b44716b2a81845b,
+  newObstacle: {fileID: 5062172552364453805, guid: 8902e0f555424a940b44716b2a81845b,
     type: 3}
 --- !u!1001 &532421706
 PrefabInstance:
