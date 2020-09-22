@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 9172568720624663918}
   - component: {fileID: 7461254070603398852}
   - component: {fileID: 1926781916242008453}
-  - component: {fileID: 534159023401045626}
   m_Layer: 8
   m_Name: WallBasic (1)
   m_TagString: Wall
@@ -240,22 +239,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &534159023401045626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682744212959162862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e983e06b7589c45ac2257f02ab29e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallNo: 0
-  wallDifficulty: 0
-  breakablePart: 0
-  wallSpeed: 0
 --- !u!1 &5422789297150524094
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +252,6 @@ GameObject:
   - component: {fileID: 4336003127842100965}
   - component: {fileID: 4776514088984578938}
   - component: {fileID: 1907778691367080648}
-  - component: {fileID: 2741533326410638696}
   m_Layer: 8
   m_Name: WallBasic (2)
   m_TagString: Wall
@@ -367,19 +349,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2741533326410638696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5422789297150524094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e983e06b7589c45ac2257f02ab29e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallNo: 0
-  wallDifficulty: 0
-  breakablePart: 0
-  wallSpeed: 0
