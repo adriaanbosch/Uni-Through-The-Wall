@@ -21,44 +21,44 @@ public class DeployWalls : MonoBehaviour
     private void spawnWalls(int wave) {
 
         // Spawn wall and obstacle N times where N times is requried to be set;
-            if((wave%2) == 0)
-            {
-                randWall = Random.Range(1, 4);
+        if((wave%2) == 0)
+        {
+            randWall = Random.Range(1, 4);
 
-                // adds prefab to scene
-                if (randWall == 1)
-                {
-                    GameObject a = Instantiate(wallBasic1) as GameObject;
-                    a.transform.position = new Vector3(-5.5f, 5f, 90f);
-                }
-                else if (randWall == 2)
-                {
-                    GameObject a = Instantiate(wallBasic2) as GameObject;
-                    a.transform.position = new Vector3(-2.5f, 5f, 90f);
-                }
-                else if (randWall == 3)
-                {
-                    GameObject a = Instantiate(wallBasic3) as GameObject;
-                    a.transform.position = new Vector3(0.0f, 7.5f, 90f);
-                }
-            }
-            else
+            // adds random walls to the scene
+            if (randWall == 1)
             {
-                GameObject obstacle = Instantiate(ballObject) as GameObject;
-                obstacle.transform.position = new Vector3(0.0f, 5f, 90f);
+                GameObject a = Instantiate(wallBasic1) as GameObject;
+                a.transform.position = new Vector3(-5.5f, 5f, 90f);
             }
-    
-        
+            else if (randWall == 2)
+            {
+                GameObject a = Instantiate(wallBasic2) as GameObject;
+                a.transform.position = new Vector3(-2.5f, 5f, 90f);
+            }
+            else if (randWall == 3)
+            {
+                GameObject a = Instantiate(wallBasic3) as GameObject;
+                a.transform.position = new Vector3(0.0f, 7.5f, 90f);
+            }
+        }
+        else
+        {
+            // adds ball obstacle to the scene in random x location.
+            float randomX = Random.Range(-7f, 7f);
+            GameObject obstacle = Instantiate(ballObject) as GameObject;
+            obstacle.transform.position = new Vector3(randomX, 5f, 90f);
+        }        
     }
 
     IEnumerator callSpawnWalls(int wave) {
-        while(true) {
+        // Delay between object spawn
+        while (true) {
             for (int i = 2; i < wave + 2; i++)
             {
                 yield return new WaitForSeconds(respawnTime);
                 spawnWalls(i);
             }
-
         }
         
     }
