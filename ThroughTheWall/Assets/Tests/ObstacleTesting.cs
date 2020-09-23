@@ -47,7 +47,6 @@ namespace Tests
             Assert.AreEqual(oldPosition, newPosition);
         }
 
-
         public GameObject CreateObstacle(int size)
         {
             GameObject obstacle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
