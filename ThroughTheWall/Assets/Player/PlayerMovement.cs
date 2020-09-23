@@ -1,70 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 
 {
-	float speed = 10;
-	float rotSpeed = 120;
+	float speed = 10f;
+	float jumpForce = 8f;
+	float gravity = 12f;
+	float rotSpeed = 100f;
 	float rot = 0f;
-	float gravity = 8;
 
 	Vector3 moveDir = Vector3.zero;
 
-
 	CharacterController controller;
 	Animator anim;
-
-
-
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		controller = GetComponent<CharacterController>();
 		anim = GetComponent<Animator>();
+		
 	}
-
 
 	// Update is called once per frame
 	void Update()
 	{
-		Movement();
-	}
-
-	void Movement()
-	{
 		if (controller.isGrounded)
 		{
+			moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDir = Vector3.ClampMagnitude(moveDir, 1);
+			moveDir = transform.TransformDirection(moveDir);
+			moveDir *= speed;
 
-
-			if (Input.GetKey(KeyCode.W))
+			if (Input.GetButtonDown("Vertical"))
 			{
 				anim.SetInteger("condition", 1);
-				moveDir = new Vector3(0, 0, 1);
-				moveDir *= speed;
-				moveDir = transform.TransformDirection(moveDir);
 			}
 
-			if (Input.GetKeyUp(KeyCode.W))
-			{
-				anim.SetInteger("condition", 0);
-				moveDir = new Vector3(0, 0, 0);
-			}
-
-			if (Input.GetKey(KeyCode.Space))
+			if (Input.GetButtonDown ("Jump"))
             {
-				anim.SetInteger("condition", 1);
-				moveDir = new Vector3(0, 1, 1);
-				moveDir *= speed;
-				moveDir = transform.TransformDirection(moveDir);
-			}
+				anim.SetInteger("condition", 2);
+				moveDir.y = jumpForce;
+            }
 
-			if (Input.GetKeyUp(KeyCode.Space))
+			if (Input.GetButtonUp("Vertical") || Input.GetButtonUp("Jump"))
 			{
 				anim.SetInteger("condition", 0);
-				moveDir = new Vector3(0, 0, 0);
 			}
 		}
 
