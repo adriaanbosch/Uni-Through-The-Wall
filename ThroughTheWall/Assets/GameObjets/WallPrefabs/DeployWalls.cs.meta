@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 77f14471ac70e9e478b4b3598affe59e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wallBasic1: {fileID: 4022902917694852196, guid: a1bd9f8f6a5d8284784a20e1327c4c25,
+      type: 3}
+  - wallBasic2: {fileID: 8210229378385839218, guid: 0c1a12d21a774554984547d73695546c,
+      type: 3}
+  - wallBasic3: {fileID: 4120451040780913016, guid: 4e86339f8aecfd142a03dcff8cfad033,
+      type: 3}
+  - ballObject: {fileID: 5062172552364453805, guid: 8902e0f555424a940b44716b2a81845b,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

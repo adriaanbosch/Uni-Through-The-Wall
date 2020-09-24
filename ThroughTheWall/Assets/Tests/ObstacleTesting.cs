@@ -28,13 +28,23 @@ namespace Tests
             Assert.AreEqual(check, obstacle.transform.localScale);
         }
 
-        [Test]
-        public void ObstacleMovement()
+        [UnityTest]
+        public IEnumerator ObstacleMovement()
         {
             var randomSize = Random.Range(1, 6);
             GameObject obstacle = CreateObstacle(randomSize);
 
-            
+            var oldPosition = -0.1f;
+
+            // Add movement script to the obstacle
+            obstacle.AddComponent<ObstacleScript>();
+
+            // Skip one frame
+            yield return null;
+
+            var newPosition = obstacle.transform.position.z;
+
+            Assert.AreEqual(oldPosition, newPosition);
         }
 
         public GameObject CreateObstacle(int size)
