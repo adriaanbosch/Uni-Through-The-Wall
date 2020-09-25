@@ -1,4 +1,4 @@
-﻿using System.CodeDom;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +18,7 @@ public class Timer : MonoBehaviour
 
     public void UpdateTimerUI()
     {
+        timerText.transform.position = new Vector2(Screen.width-120, Screen.height-50);
         secondsCount += Time.deltaTime;
 
         timerText.text = "Time Survived: " + hourCount + "h: " + minuteCount.ToString("00") + "m: " + ((int)secondsCount).ToString("00") + "s";
