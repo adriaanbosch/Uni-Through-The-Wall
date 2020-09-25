@@ -4973,7 +4973,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2144357553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253debcaf6d7e7b44b78b263ca451aca, type: 3}
+  m_Script: {fileID: 11500000, guid: 544edee31ea5d564a87bb768a90ee4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &2144357556
@@ -4986,7 +4986,7 @@ Animator:
   m_GameObject: {fileID: 2144357553}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 279670b9fc93b7b4594061f91933681a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0730cbfb69c7a17499423f21f6dbb312, type: 2}
+  m_Controller: {fileID: 9100000, guid: bc514ba047eb1ef42806293cab3ddb82, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5029,3 +5029,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2144357559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144357553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cecf6452205a7d4494944b74141ca4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 2144357555}
