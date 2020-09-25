@@ -11,7 +11,7 @@ namespace Tests
 	{
 		void Start()
 		{
-            IsDead();
+
 		}
 		void Update()
 		{
@@ -19,7 +19,7 @@ namespace Tests
 		}
 		void IsDead()
 		{
-			if (this.transform.position.y < -6)
+			if (this.transform.position.y < -6f)
 			{
                 Destroy(this.gameObject);
 

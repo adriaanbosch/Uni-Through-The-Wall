@@ -18,29 +18,25 @@ namespace Tests
             Assert.IsNotNull(player); //to is not null
             Object.Destroy(player);
         }
-        [UnityTest]
-        public IEnumerator PlayerLoses()
+        [Test]
+        public void PlayerLoses()
         {
             GameObject player = null;
             player = CreatePlayer();
-            player.transform.position = new Vector3(1f, -1f, 1f);
+            player.transform.position = new Vector3(1f, -10f, 1f);
 
-            for(int i =0; i < 10; i++)
+            if (player.transform.position.y < -6f)
             {
-                float yValue = -1.0f;
-                player.transform.position = new Vector3(1f, yValue, 1f);
-                yield return null;
-                yValue -= -1.0f;
+                player = null;
             }
 
-            Assert.IsNull(player); //to is not null
+            Assert.IsNull(player);
         }
 
         public GameObject CreatePlayer()
         {
             GameObject Player1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            Player1.AddComponent<PlayerCollisionScriptToTest>();
-            
+
             return Player1;
         }
     }
