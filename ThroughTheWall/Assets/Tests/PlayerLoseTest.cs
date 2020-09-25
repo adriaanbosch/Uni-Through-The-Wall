@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -13,32 +13,35 @@ namespace Tests
         public void PlayerCreation()
         {
             GameObject player = null;
-            player = CreatePlayer(player);
+            player = CreatePlayer();
 
-            Assert.IsNull(player); //to is not null
+            Assert.IsNotNull(player); //to is not null
             Object.Destroy(player);
         }
-        [Test]
-        public void PlayerLoses()
+        [UnityTest]
+        public IEnumerator PlayerLoses()
         {
             GameObject player = null;
-            player = CreatePlayer(player);
-            player.transform.position = new Vector3(1f, 1f, 1f);
-            if (player.transform.position.y < -6)
+            player = CreatePlayer();
+            player.transform.position = new Vector3(1f, -1f, 1f);
+
+            for(int i =0; i < 10; i++)
             {
-
+                float yValue = -1.0f;
+                player.transform.position = new Vector3(1f, yValue, 1f);
+                yield return null;
+                yValue -= -1.0f;
             }
-            player.transform.position = new Vector3(1f, -10f, 1f);
 
+            Assert.IsNull(player); //to is not null
         }
 
-        public GameObject CreatePlayer(GameObject player)
+        public GameObject CreatePlayer()
         {
-            GameObject Playerl = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            player.AddComponent<PlayerCollisionScriptToTest>();
+            GameObject Player1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Player1.AddComponent<PlayerCollisionScriptToTest>();
             
-
-            return player;
+            return Player1;
         }
     }
 }

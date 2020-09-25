@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +11,7 @@ namespace Tests
 	{
 		void Start()
 		{
-
+            IsDead();
 		}
 		void Update()
 		{
@@ -21,7 +21,7 @@ namespace Tests
 		{
 			if (this.transform.position.y < -6)
 			{
-				Debug.Log("you have died.");
+                Destroy(this.gameObject);
 
 				//back to main menu
 				SceneManager.LoadScene(0);
