@@ -29,17 +29,17 @@ public class DeployWalls : MonoBehaviour
             if (randWall == 1)
             {
                 GameObject a = Instantiate(wallBasic1) as GameObject;
-                a.transform.position = new Vector3(-5.5f, 5f, 90f);
+                a.transform.position = new Vector3(-1.193203f, 6.31f, 92f);
             }
             else if (randWall == 2)
             {
                 GameObject a = Instantiate(wallBasic2) as GameObject;
-                a.transform.position = new Vector3(-2.5f, 5f, 90f);
+                a.transform.position = new Vector3(-5.893f, 6.31f, 92f);
             }
             else if (randWall == 3)
             {
                 GameObject a = Instantiate(wallBasic3) as GameObject;
-                a.transform.position = new Vector3(0.0f, 7.5f, 90f);
+                a.transform.position = new Vector3(3.158229f, 6.31f, 92f);
             }
         }
         else
