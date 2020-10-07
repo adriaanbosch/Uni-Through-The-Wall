@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,10 +10,13 @@ public class PlayerMovement : MonoBehaviour
 	float speed = 10f;
 	float jumpForce = 8f;
 	float gravity = 12f;
-	float rotSpeed = 100f;
-	float rot = 0f;
+	float rotSpeed = 200f;
+	//float rot = 0f;
     float pickupRange = 2;
     Vector3 moveDir = Vector3.zero;
+
+    float rotX;
+    float rotY;
 
 	CharacterController controller;
 	Animator anim;
@@ -29,7 +33,9 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
         Movement();
+        Rotation();
 	}
+    
     void Movement()
     {
         if (controller.isGrounded)
@@ -56,8 +62,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, rot, 0);
+        //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+        //transform.eulerAngles = new Vector3(0, rot, 0);
 
         moveDir.y -= gravity * Time.deltaTime;
         controller.Move(moveDir * Time.deltaTime);
@@ -94,10 +100,30 @@ public class PlayerMovement : MonoBehaviour
         }
         return null;
     }
+    
     void GrabObject() // uses the fixed joint attached to the character to connect / grab objects // not fully working yet
     {
         GameObject objects = GetObjectMouseHover();
         gameObject.GetComponent<FixedJoint>().connectedBody = objects.GetComponent<Rigidbody>();
         Debug.Log("fixed joint should be connected");
+    }
+
+    void Rotation()
+    {
+        rotX -= Input.GetAxis("Mouse Y") * Time.deltaTime * rotSpeed;
+        rotY += Input.GetAxis("Mouse X") * Time.deltaTime * rotSpeed;
+
+        if (rotX < -90)
+        {
+            rotX = -90;
+        }
+
+        else if (rotX > 90)
+        {
+            rotX = 90;
+        }
+
+        transform.rotation = Quaternion.Euler(0, rotY, 0);
+        GameObject.FindWithTag ("MainCamera").transform.rotation = Quaternion.Euler(rotY, rotY, 0);
     }
 }
