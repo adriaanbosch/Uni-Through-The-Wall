@@ -25,7 +25,7 @@ public class WallScript : MonoBehaviour
         transform.position = new Vector3(transform.position.x , transform.position.y, transform.position.z - wallSpeed);
 
         // removes game object from scene once it goes out of bounds on x axis
-        if (transform.position.z < screenBounds.x) {
+        if (transform.position.z < -40.0f) {
             Destroy(this.gameObject);
         }
     }
