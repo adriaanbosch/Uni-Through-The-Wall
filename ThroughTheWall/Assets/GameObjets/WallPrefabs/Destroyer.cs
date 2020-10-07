@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Destroyer : MonoBehaviour
 {
     public float lifeTime = 10f;
+    public AudioSource collisionSource;
+
+    private void Start()
+    {
+        collisionSource = GetComponent<AudioSource>();        
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,6 +31,8 @@ public class Destroyer : MonoBehaviour
     {
         if(coll.gameObject.name == "Destroyer")
         {
+            collisionSource.Play();
+
             Destruction();
         }
     }
