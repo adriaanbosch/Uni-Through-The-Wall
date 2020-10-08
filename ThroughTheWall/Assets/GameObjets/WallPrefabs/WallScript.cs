@@ -19,8 +19,8 @@ public class WallScript : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is independent on frame rate and relies on time intervals
+    void FixedUpdate()
     {// this should cause the wall to move only on the x axis
         transform.position = new Vector3(transform.position.x , transform.position.y, transform.position.z - wallSpeed);
 

@@ -11,8 +11,8 @@ public class ObstacleScript : MonoBehaviour
         objectSpeed = 0.1f;
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is called at time intervals
+    void FixedUpdate()
     {
         // this should cause the wall to move only on the x axis
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - objectSpeed);
