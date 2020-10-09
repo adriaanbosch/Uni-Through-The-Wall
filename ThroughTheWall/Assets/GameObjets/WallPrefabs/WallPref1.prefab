@@ -808,7 +808,7 @@ MonoBehaviour:
   wallNo: 0
   wallDifficulty: 0
   breakablePart: 0
-  wallSpeed: 0
+  wallSpeed: 0.1
 --- !u!65 &278283066425911759
 BoxCollider:
   m_ObjectHideFlags: 0
