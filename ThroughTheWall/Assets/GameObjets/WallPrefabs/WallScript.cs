@@ -7,12 +7,16 @@ public class WallScript : MonoBehaviour
     public int wallNo;
     public int wallDifficulty;
     public bool breakablePart;
-    public float wallSpeed;
+    private float wallSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
        
+    }
+
+    public void setWallSpeed(float newSpeed) {
+        this.wallSpeed = newSpeed;
     }
 
     // FixedUpdate is independent on frame rate and relies on time intervals
