@@ -9,7 +9,7 @@ public class DeployWalls : MonoBehaviour
     public GameObject wallBasic3;
     public GameObject ballObject;
     private int randWall;
-    public float respawnTime = 10.0f;
+    private float respawnTime;
     public int waves;
     public float currentWallSpeed;
 
@@ -23,9 +23,11 @@ public class DeployWalls : MonoBehaviour
         // control the speed variable
         if (currentTotalWalls == 1) {
             currentWallSpeed = 0.1f;
-        } else if (currentTotalWalls % 3 == 0) {
-            currentWallSpeed = currentWallSpeed + 0.1f;
+        } else if (currentTotalWalls % 5 == 0) {
+            currentWallSpeed = currentWallSpeed + 0.07f;
         }
+
+        setRespawnTime(Random.Range(1.5f, 4.0f));
 
         // Spawn wall and obstacle N times where N times is requried to be set;
         if((i%2) == 0)
@@ -71,9 +73,14 @@ public class DeployWalls : MonoBehaviour
         return currentTotalWalls;
     }
 
+    private void setRespawnTime(float newTime) {
+        this.respawnTime = newTime;
+    }
+
     IEnumerator callSpawnWalls(int wave) {
         // keep track of how many walls
         int currentTotalWalls = 1;
+        setRespawnTime(3.0f);
 
         while (true) {
             for (int i = 2; i < wave + 2; i++)
