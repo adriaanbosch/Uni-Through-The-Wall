@@ -14,6 +14,10 @@ public class Timer : MonoBehaviour
         UpdateTimerUI();
     }
 
+    public float getSecondsCount() {
+        return this.secondsCount;
+    }
+
     public void UpdateTimerUI()
     {
         scoreText.transform.position = new Vector2(Screen.width-120, Screen.height-50);
