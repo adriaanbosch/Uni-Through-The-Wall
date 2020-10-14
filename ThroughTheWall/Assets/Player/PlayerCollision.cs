@@ -28,36 +28,12 @@ public class PlayerCollision : MonoBehaviour
 			movement.enabled = true;
 		}
 	}
-	IEnumerator OnCollisionEnter(Collider other)
-	{
-		// other object is close
-		if (other.GetComponent<MeshCollider>().tag == "KillZone")
-		{
-			this.tag = "dead";
-			Debug.Log("character tag set to dead.");
-			yield return 0;
-		}
-		else
-		{
-			Debug.Log("character tag is left alone.");
-			yield return 1;
-		}
-
-	}
+	//back to main menu
 	void IsDead()
-	{ //commented out as its not working
-      //if (this.tag == "dead")
-      //{
-      //	Debug.Log("you dead.");
-      //	//Destroy();
-      //	//restart or menu
-      //}
-      //------------------tempt fix here terrible i know
+	{ 
         if (this.transform.position.y < -6)
         {
-			Debug.Log("you dead.");
-
-			//back to main menu
+			
 				SceneManager.LoadScene(0);
 				Time.timeScale = 1;
 		}
