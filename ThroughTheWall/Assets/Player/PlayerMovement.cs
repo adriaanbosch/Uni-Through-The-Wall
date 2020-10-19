@@ -10,13 +10,8 @@ public class PlayerMovement : MonoBehaviour
 	float speed = 10f;
 	float jumpForce = 8f;
 	float gravity = 12f;
-<<<<<<< Updated upstream
 	float rotSpeed = 100f;
 	float rot = 0f;
-=======
-	float rotSpeed = 750f;
-	//float rot = 0f;
->>>>>>> Stashed changes
     float pickupRange = 2;
     GameObject[] grabbableObjects;
     Vector3 moveDir = Vector3.zero;
@@ -126,21 +121,5 @@ public class PlayerMovement : MonoBehaviour
             itemGrabbed = grabbableObject;
             itemGrabbed.transform.parent = rightHand.transform;
         }
-<<<<<<< Updated upstream
-=======
-
-        else if (rotY < -15)
-        {
-            rotY = -15;
-        }
-
-        else if (rotY > 15)
-        {
-            rotY = 15;
-        }
-
-        transform.rotation = Quaternion.Euler(0, rotY, 0);
-        GameObject.FindWithTag ("MainCamera").transform.rotation = Quaternion.Euler(rotX, rotY, 0);
->>>>>>> Stashed changes
     }
 }
