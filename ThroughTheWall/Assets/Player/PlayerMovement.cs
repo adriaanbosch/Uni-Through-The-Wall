@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -10,14 +11,13 @@ public class PlayerMovement : MonoBehaviour
 	float speed = 10f;
 	float jumpForce = 8f;
 	float gravity = 12f;
-<<<<<<< Updated upstream
-	float rotSpeed = 100f;
-	float rot = 0f;
-=======
-	float rotSpeed = 750f;
-	//float rot = 0f;
->>>>>>> Stashed changes
-    float pickupRange = 2;
+
+	float rotSpeed = 500f;
+    float rotX;
+    float rotY;
+    float rotZ;
+
+    //float pickupRange = 2;
     GameObject[] grabbableObjects;
     Vector3 moveDir = Vector3.zero;
 
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         ArmControl();
         HeldItem();
-
+        Rotation();
     }
     void Movement()
     {
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             moveDir = transform.TransformDirection(moveDir);
             moveDir *= speed;
 
-            if (Input.GetButtonDown("Vertical"))
+            if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
             {
                 anim.SetInteger("condition", 1);
             }
@@ -67,9 +67,6 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetInteger("condition", 0);
             }
         }
-
-        rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, rot, 0);
 
         moveDir.y -= gravity * Time.deltaTime;
         controller.Move(moveDir * Time.deltaTime);
@@ -126,21 +123,34 @@ public class PlayerMovement : MonoBehaviour
             itemGrabbed = grabbableObject;
             itemGrabbed.transform.parent = rightHand.transform;
         }
-<<<<<<< Updated upstream
-=======
+    }
 
-        else if (rotY < -15)
+    void Rotation()
+    {
+        rotX -= Input.GetAxis ("Mouse Y") * Time.deltaTime * rotSpeed;
+        rotY += Input.GetAxis ("Mouse X") * Time.deltaTime * rotSpeed;
+
+        if (rotX < -90)
         {
-            rotY = -15;
+            rotX = -90;
         }
 
-        else if (rotY > 15)
+        else if (rotX > 90)
         {
-            rotY = 15;
+            rotX = 90;
+        }
+
+        else if (rotY < -35)
+        {
+            rotY = -35;
+        }
+
+        else if (rotY > 35)
+        {
+            rotY = 35;
         }
 
         transform.rotation = Quaternion.Euler(0, rotY, 0);
-        GameObject.FindWithTag ("MainCamera").transform.rotation = Quaternion.Euler(rotX, rotY, 0);
->>>>>>> Stashed changes
+        GameObject.FindWithTag("MainCamera").transform.rotation = Quaternion.Euler(rotX, rotY, 0);
     }
 }
