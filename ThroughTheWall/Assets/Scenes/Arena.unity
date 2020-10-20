@@ -1288,8 +1288,8 @@ MonoBehaviour:
     type: 3}
   ballObject: {fileID: 5062172552364453805, guid: 8902e0f555424a940b44716b2a81845b,
     type: 3}
-  respawnTime: 3
   waves: 10
+  currentWallSpeed: 0
 --- !u!114 &529872295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3158e7e713e7dc4cb848de89136a539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1632856531}
+  scoreText: {fileID: 1632856531}
 --- !u!1 &1826200142
 GameObject:
   m_ObjectHideFlags: 0
