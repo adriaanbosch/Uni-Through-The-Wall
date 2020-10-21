@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     public Text scoreText;
     private float secondsCount;
-
+   
     void Update()
     {
         UpdateTimerUI();
@@ -24,5 +24,6 @@ public class Timer : MonoBehaviour
         secondsCount += Time.deltaTime;
 
         scoreText.text = "Score: " + ((int)secondsCount).ToString("0000");
+        
     }
 }
