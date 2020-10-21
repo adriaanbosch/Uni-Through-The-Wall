@@ -84,7 +84,7 @@ public class PlayerCollision : MonoBehaviour
 			Debug.Log("final score as int" + endScore);
 			SortHighScore(endScore);
 
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene(3);
 			Time.timeScale = 1;
 		}
 	}
