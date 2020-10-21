@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 
@@ -9,27 +11,37 @@ public class PlayerMovement : MonoBehaviour
 	float speed = 10f;
 	float jumpForce = 8f;
 	float gravity = 12f;
-	float rotSpeed = 100f;
-	float rot = 0f;
-    float pickupRange = 2;
+
+	float rotSpeed = 500f;
+    float rotX;
+    float rotY;
+    float rotZ;
+
+    //float pickupRange = 2;
+    GameObject[] grabbableObjects;
     Vector3 moveDir = Vector3.zero;
 
 	CharacterController controller;
 	Animator anim;
+    GameObject rightHand;
+    GameObject itemGrabbed;
 
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    void Start()
 	{
 		controller = GetComponent<CharacterController>();
 		anim = GetComponent<Animator>();
-		
-	}
+        rightHand = GameObject.FindGameObjectWithTag("PickupBone");
+    }
 
 	// Update is called once per frame
 	void Update()
 	{
         Movement();
-	}
+        ArmControl();
+        HeldItem();
+        Rotation();
+    }
     void Movement()
     {
         if (controller.isGrounded)
@@ -39,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             moveDir = transform.TransformDirection(moveDir);
             moveDir *= speed;
 
-            if (Input.GetButtonDown("Vertical"))
+            if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
             {
                 anim.SetInteger("condition", 1);
             }
@@ -56,9 +68,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, rot, 0);
-
         moveDir.y -= gravity * Time.deltaTime;
         controller.Move(moveDir * Time.deltaTime);
     }
@@ -67,37 +76,81 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetAxis("Mouse Y") > 0)
         {
-            print("Mouse moved up");
             //something something animation
         }
         if (Input.GetAxis("Mouse Y") < 0)
         {
-            print("Mouse moved down");
             //something something animation	
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Pressed primary button.");
             GrabObject();
         }
-
-
     }
-    GameObject GetObjectMouseHover()// raycasts to find what opject is infront of the player
+    void HeldItem()
     {
-        Vector3 position = gameObject.transform.position;
-        RaycastHit raycastHit;
-        Vector3 target = position + gameObject.transform.forward * pickupRange;
-        if (Physics.Linecast(position, target, out raycastHit))
+        if (itemGrabbed != null)
         {
-            return raycastHit.collider.gameObject;
+            itemGrabbed.transform.position = rightHand.transform.position;
         }
-        return null;
     }
-    void GrabObject() // uses the fixed joint attached to the character to connect / grab objects // not fully working yet
+    // this method checks if an item is already being held, if so drop it, it not find all pickup'able objects and try pick them up
+    void GrabObject()
     {
-        GameObject objects = GetObjectMouseHover();
-        gameObject.GetComponent<FixedJoint>().connectedBody = objects.GetComponent<Rigidbody>();
-        Debug.Log("fixed joint should be connected");
+        if (itemGrabbed != null)
+        {
+            itemGrabbed.transform.parent = null;
+            itemGrabbed = null;
+        }
+        else
+        {
+            grabbableObjects = GameObject.FindGameObjectsWithTag("Item");
+            if (grabbableObjects.Length != 0)
+            {
+                foreach (GameObject grabbableObject in grabbableObjects)
+                {
+                    IsItemInPickupRange(grabbableObject);
+                }
+            }
+        } 
+    }
+    //this method will check if the item is close enough to the player to be picked up, if so pick it up
+    void IsItemInPickupRange(GameObject grabbableObject)
+    {
+        float dist = Vector3.Distance(grabbableObject.transform.position, rightHand.transform.position);
+        if (dist <= 2 && dist >= 0)
+        {
+            itemGrabbed = grabbableObject;
+            itemGrabbed.transform.parent = rightHand.transform;
+        }
+    }
+
+    void Rotation()
+    {
+        rotX -= Input.GetAxis ("Mouse Y") * Time.deltaTime * rotSpeed;
+        rotY += Input.GetAxis ("Mouse X") * Time.deltaTime * rotSpeed;
+
+        if (rotX < -90)
+        {
+            rotX = -90;
+        }
+
+        else if (rotX > 90)
+        {
+            rotX = 90;
+        }
+
+        else if (rotY < -35)
+        {
+            rotY = -35;
+        }
+
+        else if (rotY > 35)
+        {
+            rotY = 35;
+        }
+
+        transform.rotation = Quaternion.Euler(0, rotY, 0);
+        GameObject.FindWithTag("MainCamera").transform.rotation = Quaternion.Euler(rotX, rotY, 0);
     }
 }
