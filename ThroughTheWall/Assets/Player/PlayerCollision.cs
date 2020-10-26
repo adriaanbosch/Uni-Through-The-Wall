@@ -36,8 +36,6 @@ public class PlayerCollision : MonoBehaviour
 		for (int i = 0; i < newScores.Length; i++)
 		{
 			PlayerPrefs.SetInt("HighScore" + i, newScores[i]);
-			Debug.Log("Current Score index: " + i + ", value: " + newScores[i]);
-			Debug.Log("Current Score index: " + i + ", value: " + PlayerPrefs.GetInt("HighScore" + i));
 		}
 	}
 
@@ -70,7 +68,6 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (collisionInfo.collider.tag == "Obstacle")
 		{
-			Debug.Log("test");
 			anim.SetInteger("condition", 3);
 			movement.enabled = false;
 			yield return new WaitForSeconds(2);
@@ -83,11 +80,8 @@ public class PlayerCollision : MonoBehaviour
         if (this.transform.position.y < -6)
         {
 				string finalScore = trackTimer.scoreText.text;
-				Debug.Log("final score as string: " + finalScore);
 				finalScore = finalScore.Substring(7);
-				Debug.Log("final score as string: " + finalScore);
 				int endScore = int.Parse(finalScore);
-				Debug.Log("final score as int" + endScore);
 				SortHighScore(endScore);
 				SceneManager.LoadScene(3);
 				Time.timeScale = 1;
@@ -101,12 +95,10 @@ public class PlayerCollision : MonoBehaviour
 		{
 			foreach (GameObject wallObject in wallObjects)
 			{
-				Debug.Log("wallObject");
 				float dist = Vector3.Distance(wallObject.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
 				if (dist <= 10 && dist >= -10)
 				{
-					hitsound.Play();
-					Debug.Log("wall sound");
+                    hitsound.Play();
 				}
 			}
 		}

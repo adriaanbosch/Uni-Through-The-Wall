@@ -10,7 +10,7 @@ public class HighScores : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+ 
     }
 
     // Update is called once per frame
@@ -29,9 +29,10 @@ public class HighScores : MonoBehaviour
         currentScores += "4th     " + PlayerPrefs.GetInt("HighScore3") + "\n";
         currentScores += "5th     " + PlayerPrefs.GetInt("HighScore4") + "\n";
 
-        highScores.text = currentScores;
-        // PlayerPrefs.GetInt("HighScore0");
-        // PlayerPrefs.GetInt("HighScore1");
+        if(highScores != null)
+        {
+            highScores.text = currentScores;
+        }
     }
     public void LoadMenu()
     {

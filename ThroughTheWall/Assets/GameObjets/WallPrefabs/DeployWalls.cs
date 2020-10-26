@@ -86,7 +86,6 @@ public class DeployWalls : MonoBehaviour
             for (int i = 2; i < wave + 2; i++)
             {
                 yield return new WaitForSeconds(respawnTime);
-                Debug.Log(currentTotalWalls);
                 currentTotalWalls = spawnWalls(i, currentTotalWalls);
             }
         }

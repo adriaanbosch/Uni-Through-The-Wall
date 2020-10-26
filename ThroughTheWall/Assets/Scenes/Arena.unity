@@ -830,7 +830,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 780338661}
-  GameoverUI: {fileID: 0}
 --- !u!1 &450680598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,7 +2012,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &780338661
 GameObject:
@@ -3767,7 +3766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1 &1826200142
 GameObject:
@@ -3936,7 +3935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 2105188403}
-  hitsound: {fileID: 0}
+  hitsound: {fileID: 2105188408}
   trackTimer: {fileID: 1632856533}
 --- !u!65 &2105188405
 BoxCollider:
