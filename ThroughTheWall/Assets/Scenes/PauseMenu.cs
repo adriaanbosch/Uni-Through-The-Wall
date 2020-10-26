@@ -9,11 +9,13 @@ public class PauseMenu : MonoBehaviour
     public static bool Paused_Q = false;
 
     public GameObject pauseMenuUI;
+    public GameObject GameoverUI;
 
 
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        GameoverUI.SetActive(false);
     }
 
     void Update()
@@ -31,6 +33,11 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        
+        if (this.transform.position.y < -10)
+        {
+            GameOver();
+        }
     }
 
     public void Resume()
@@ -45,6 +52,11 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         Paused_Q = true;
+    }
+
+    void GameOver()
+    {
+        GameoverUI.SetActive(true);
     }
 
     public void LoadMenu()
