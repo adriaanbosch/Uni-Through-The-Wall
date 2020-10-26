@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class HighScores : MonoBehaviour
 {
     public Text highScores;
@@ -31,5 +32,9 @@ public class HighScores : MonoBehaviour
         highScores.text = currentScores;
         // PlayerPrefs.GetInt("HighScore0");
         // PlayerPrefs.GetInt("HighScore1");
+    }
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
