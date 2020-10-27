@@ -6,33 +6,24 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Text timerText;
+    public Text scoreText;
     private float secondsCount;
-    private int minuteCount;
-    private int hourCount;
-
+   
     void Update()
     {
         UpdateTimerUI();
     }
 
+    public float getSecondsCount() {
+        return this.secondsCount;
+    }
+
     public void UpdateTimerUI()
     {
-        timerText.transform.position = new Vector2(Screen.width-120, Screen.height-50);
+        scoreText.transform.position = new Vector2(Screen.width-120, Screen.height-50);
         secondsCount += Time.deltaTime;
 
-        timerText.text = "Time Survived: " + hourCount + "h: " + minuteCount.ToString("00") + "m: " + ((int)secondsCount).ToString("00") + "s";
-
-        if (secondsCount >= 60)
-        {
-            minuteCount++;
-            secondsCount %= 60;
-            
-            if (minuteCount >= 60)
-            {
-                hourCount++;
-                minuteCount %= 60;
-            }
-        }
+        scoreText.text = "Score: " + ((int)secondsCount).ToString("0000");
+        
     }
 }

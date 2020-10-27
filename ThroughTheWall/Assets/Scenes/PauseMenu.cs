@@ -10,7 +10,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-
     void Start()
     {
         pauseMenuUI.SetActive(false);
@@ -18,8 +17,6 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Paused_Q)
@@ -30,6 +27,11 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+        
+        if (this.transform.position.y < -10)
+        {
+            SceneManager.LoadScene(3);
         }
     }
 

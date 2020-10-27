@@ -7,59 +7,100 @@ public class PlayerCollision : MonoBehaviour
 {
 	Animator anim;
 	public PlayerMovement movement;
+	public AudioSource hitsound;
+	public Timer trackTimer;
 
 	void Start()
 	{
 		anim = GetComponent<Animator>();
-		
+		hitsound = GetComponent<AudioSource>();
 	}
 	void Update()
 	{
 		IsDead();
 	}
+	int[] GetCurrentScores()
+	{
+		int[] currentScores = new int[5];
+
+		for (int i = 0; i < currentScores.Length; i++)
+		{
+			currentScores[i] = PlayerPrefs.GetInt("HighScore" + i, 0);
+		}
+
+		return currentScores;
+	}
+
+	void setCurrentScores(int[] newScores)
+	{
+		for (int i = 0; i < newScores.Length; i++)
+		{
+			PlayerPrefs.SetInt("HighScore" + i, newScores[i]);
+		}
+	}
+
+	void SortHighScore(int value)
+	{
+		int newHighScore = value;
+
+		int[] highScoreValues = new int[5];
+		highScoreValues = GetCurrentScores();
+
+		// sort scores
+		for (int i = 0; i < highScoreValues.Length; i++)
+		{
+			if (newHighScore > highScoreValues[i])
+			{
+				for (int j = highScoreValues.Length - 1; j > i; j--)
+				{
+					highScoreValues[j] = highScoreValues[j - 1];
+				}
+
+				highScoreValues[i] = newHighScore;
+				newHighScore = -1;
+			}
+		}
+
+		// save the sorted array
+		setCurrentScores(highScoreValues);
+	}
 	IEnumerator OnCollisionEnter(Collision collisionInfo)
 	{
 		if (collisionInfo.collider.tag == "Obstacle")
 		{
-			Debug.Log("test");
 			anim.SetInteger("condition", 3);
 			movement.enabled = false;
 			yield return new WaitForSeconds(2);
 			movement.enabled = true;
 		}
 	}
-	IEnumerator OnCollisionEnter(Collider other)
-	{
-		// other object is close
-		if (other.GetComponent<MeshCollider>().tag == "KillZone")
-		{
-			this.tag = "dead";
-			Debug.Log("character tag set to dead.");
-			yield return 0;
-		}
-		else
-		{
-			Debug.Log("character tag is left alone.");
-			yield return 1;
-		}
-
-	}
+	//back to main menu
 	void IsDead()
-	{ //commented out as its not working
-      //if (this.tag == "dead")
-      //{
-      //	Debug.Log("you dead.");
-      //	//Destroy();
-      //	//restart or menu
-      //}
-      //------------------tempt fix here terrible i know
+	{ 
         if (this.transform.position.y < -6)
         {
-			Debug.Log("you dead.");
-
-			//back to main menu
-				SceneManager.LoadScene(0);
+				string finalScore = trackTimer.scoreText.text;
+				finalScore = finalScore.Substring(7);
+				int endScore = int.Parse(finalScore);
+				SortHighScore(endScore);
+				SceneManager.LoadScene(3);
 				Time.timeScale = 1;
+		}
+	}
+
+	void OnHitSound()
+	{
+		GameObject[] wallObjects = GameObject.FindGameObjectsWithTag("Wall");
+		if (wallObjects.Length != 0)
+		{
+			foreach (GameObject wallObject in wallObjects)
+			{
+				float dist = Vector3.Distance(wallObject.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+				if (dist <= 10 && dist >= -10)
+				{
+                    hitsound.Play();
+				}
+			}
 		}
 	}
 }
